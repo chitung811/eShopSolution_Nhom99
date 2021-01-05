@@ -1,0 +1,55 @@
+﻿@{
+	ViewData["Title"] = "ThemTaiKhoan";
+	Layout = "_AdminLayout";
+}
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+	<h1 class="m-0 text-dark">Thêm tài khoản</h1>
+</div>
+<section class="content" id="placeAdd">
+	<div class="contentCont">
+		<div class="infoUser Left">
+			<div class="subInfo">
+				<div class="info">ID</div>
+				<input type="text" id="id" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Tên Tài khoản</div>
+				<input type="text" id="user" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Password</div>
+				<input type="text" id="pass" class="inputField" value="">
+			</div>
+			<div class="subInfo">
+				<div class="info">Họ và tên</div>
+				<input type="text" id="name" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Số điện thoại</div>
+				<input type="text" id="phone" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info"> Địa chỉ</div>
+				<input type="text" id="address" class="inputField">
+			</div>
+
+		</div>
+		<div class="infoUser Right">
+			<div class="subInfo">
+				<div class="info">Địa chỉ Email</div>
+				<input type="text" id="email" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Phân Quyền</div>
+				<input type="checkbox" id="author1">
+				<label>  ADMIN</label><br>
+				<input type="checkbox" id="author2">
+				<label>  USER</label><br>
+			</div>
+			<div class="btnAccept" onclick="addAccount()">Xác Nhận</div>
+		</div>
+	</div>
+	<br />
+</section>

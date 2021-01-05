@@ -12,5 +12,9 @@ namespace eShopSolution.WebApp.Controllers
         {
             return View();
         }
+        public IActionResult ThemSach()
+        {
+            return View();
+        }
     }
 }

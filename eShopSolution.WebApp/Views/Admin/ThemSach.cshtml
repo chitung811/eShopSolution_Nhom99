@@ -1,0 +1,70 @@
+﻿@{
+	ViewData["Title"] = "ThemSach";
+	Layout = "_AdminLayout";
+}
+<div class="modal fade" id="modal-default">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Default Modal</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>One fine body&hellip;</p>
+			</div>
+			<div class="modal-footer justify-content-between">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" id="btnSave" data-item="">Save changes</button>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content" id="placeAdd">
+	<div class="title">Thêm Sản Phẩm</div>
+	<div class="contentCont">
+		<div class="infoUser Left">
+			<div class="subInfo">
+				<div class="info">Tên Sản Phẩm</div>
+				<input type="text" id="name" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Giá Gốc</div>
+				<input type="text" id="code" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info"> Giá Tiền</div>
+				<input type="text" id="price" class="inputField" }>
+			</div>
+			<div class="subInfo">
+				<div class="info">Giá Khuyến Mãi</div>
+				<input type="text" id="discount" class="inputField">
+			</div>
+		</div>
+		<div class="infoUser Right">
+			<div class="subInfo">
+				<div class="info">Tác Giả</div>
+				<input type="text" id="writer" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Thể Loại Sách</div>
+				<input type="text" id="idcategory" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Mô Tả Sách</div>
+				<input type="text" id="detail" class="inputField">
+			</div>
+			<div class="subInfo">
+				<div class="info">Hình Ảnh</div>
+				<input type="text" id="img" class="inputField">
+			</div>
+			<div class="btn btnAccept">Xác Nhận</div>
+		</div>
+	</div>
+</section>
