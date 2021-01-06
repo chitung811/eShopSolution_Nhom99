@@ -15,7 +15,6 @@ namespace eShopSolution.WebApp.Entities
         public DbSet<LoaiSach> LoaiSachs { get; set; }
         public DbSet<Sach> Sachs { get; set; }
         public DbSet<DonHang> DonHangs { get; set; }
-        public DbSet<GioHang> GioHangs { get; set; }
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
         public DbSet<CTDH> CTDHs { get; set; }
 

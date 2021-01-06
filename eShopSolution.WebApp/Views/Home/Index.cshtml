@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<eShopSolution.WebApp.Entities.Sach>
+@{
 	ViewData["Title"] = "Home Page";
 	Layout = "_MainLayout";
 }
@@ -27,7 +28,10 @@
 	<div class="wrap">
 		<div class="productB">
 			<div id="placeAdd">
-			Danh sách sách
+				@foreach (var item in Model)
+				{
+					@Html.DisplayFor(modelItem => item.TenSach)
+				}
 			</div>
 
 		</div>

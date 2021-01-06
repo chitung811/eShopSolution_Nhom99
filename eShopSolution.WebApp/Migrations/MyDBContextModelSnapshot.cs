@@ -63,29 +63,6 @@ namespace eShopSolution.WebApp.Migrations
                     b.ToTable("DonHang");
                 });
 
-            modelBuilder.Entity("eShopSolution.WebApp.Entities.GioHang", b =>
-                {
-                    b.Property<int>("MaGH")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ID");
-
-                    b.Property<int>("MaKH");
-
-                    b.Property<int>("MaSach");
-
-                    b.Property<int>("SoLuong");
-
-                    b.HasKey("MaGH");
-
-                    b.HasIndex("ID");
-
-                    b.HasIndex("MaSach");
-
-                    b.ToTable("GioHang");
-                });
-
             modelBuilder.Entity("eShopSolution.WebApp.Entities.LoaiSach", b =>
                 {
                     b.Property<int>("MaLoai")
@@ -109,8 +86,6 @@ namespace eShopSolution.WebApp.Migrations
 
                     b.Property<double>("Gia");
 
-                    b.Property<int?>("GioHangMaGH");
-
                     b.Property<string>("Hinh");
 
                     b.Property<int>("MaLoai");
@@ -122,8 +97,6 @@ namespace eShopSolution.WebApp.Migrations
                     b.Property<string>("TenSach");
 
                     b.HasKey("MaSach");
-
-                    b.HasIndex("GioHangMaGH");
 
                     b.HasIndex("MaLoai");
 
@@ -173,24 +146,8 @@ namespace eShopSolution.WebApp.Migrations
                         .HasForeignKey("ID");
                 });
 
-            modelBuilder.Entity("eShopSolution.WebApp.Entities.GioHang", b =>
-                {
-                    b.HasOne("eShopSolution.WebApp.Entities.TaiKhoan", "TaiKhoan")
-                        .WithMany()
-                        .HasForeignKey("ID");
-
-                    b.HasOne("eShopSolution.WebApp.Entities.Sach", "Sach")
-                        .WithMany()
-                        .HasForeignKey("MaSach")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("eShopSolution.WebApp.Entities.Sach", b =>
                 {
-                    b.HasOne("eShopSolution.WebApp.Entities.GioHang")
-                        .WithMany("Sachs")
-                        .HasForeignKey("GioHangMaGH");
-
                     b.HasOne("eShopSolution.WebApp.Entities.LoaiSach", "LoaiSach")
                         .WithMany("Sachs")
                         .HasForeignKey("MaLoai")

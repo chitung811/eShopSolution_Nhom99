@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eShopSolution.WebApp.Migrations
 {
-    public partial class eShop : Migration
+    public partial class eShopv : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,6 +37,30 @@ namespace eShopSolution.WebApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TaiKhoan", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sach",
+                columns: table => new
+                {
+                    MaSach = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    TenSach = table.Column<string>(nullable: true),
+                    TacGia = table.Column<string>(nullable: true),
+                    MaLoai = table.Column<int>(nullable: false),
+                    MoTa = table.Column<string>(nullable: true),
+                    Hinh = table.Column<string>(nullable: true),
+                    Gia = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sach", x => x.MaSach);
+                    table.ForeignKey(
+                        name: "FK_Sach_LoaiSach_MaLoai",
+                        column: x => x.MaLoai,
+                        principalTable: "LoaiSach",
+                        principalColumn: "MaLoai",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,55 +105,8 @@ namespace eShopSolution.WebApp.Migrations
                         principalTable: "DonHang",
                         principalColumn: "MaDH",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Sach",
-                columns: table => new
-                {
-                    MaSach = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    TenSach = table.Column<string>(nullable: true),
-                    TacGia = table.Column<string>(nullable: true),
-                    MaLoai = table.Column<int>(nullable: false),
-                    MoTa = table.Column<string>(nullable: true),
-                    Hinh = table.Column<string>(nullable: true),
-                    Gia = table.Column<double>(nullable: false),
-                    GioHangMaGH = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Sach", x => x.MaSach);
                     table.ForeignKey(
-                        name: "FK_Sach_LoaiSach_MaLoai",
-                        column: x => x.MaLoai,
-                        principalTable: "LoaiSach",
-                        principalColumn: "MaLoai",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "GioHang",
-                columns: table => new
-                {
-                    MaGH = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    MaKH = table.Column<int>(nullable: false),
-                    ID = table.Column<int>(nullable: true),
-                    MaSach = table.Column<int>(nullable: false),
-                    SoLuong = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GioHang", x => x.MaGH);
-                    table.ForeignKey(
-                        name: "FK_GioHang_TaiKhoan_ID",
-                        column: x => x.ID,
-                        principalTable: "TaiKhoan",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_GioHang_Sach_MaSach",
+                        name: "FK_CTDH_Sach_MaSach",
                         column: x => x.MaSach,
                         principalTable: "Sach",
                         principalColumn: "MaSach",
@@ -152,48 +129,13 @@ namespace eShopSolution.WebApp.Migrations
                 column: "ID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_GioHang_ID",
-                table: "GioHang",
-                column: "ID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_GioHang_MaSach",
-                table: "GioHang",
-                column: "MaSach");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sach_GioHangMaGH",
-                table: "Sach",
-                column: "GioHangMaGH");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Sach_MaLoai",
                 table: "Sach",
                 column: "MaLoai");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_CTDH_Sach_MaSach",
-                table: "CTDH",
-                column: "MaSach",
-                principalTable: "Sach",
-                principalColumn: "MaSach",
-                onDelete: ReferentialAction.Cascade);
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Sach_GioHang_GioHangMaGH",
-                table: "Sach",
-                column: "GioHangMaGH",
-                principalTable: "GioHang",
-                principalColumn: "MaGH",
-                onDelete: ReferentialAction.Restrict);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_GioHang_Sach_MaSach",
-                table: "GioHang");
-
             migrationBuilder.DropTable(
                 name: "CTDH");
 
@@ -204,13 +146,10 @@ namespace eShopSolution.WebApp.Migrations
                 name: "Sach");
 
             migrationBuilder.DropTable(
-                name: "GioHang");
+                name: "TaiKhoan");
 
             migrationBuilder.DropTable(
                 name: "LoaiSach");
-
-            migrationBuilder.DropTable(
-                name: "TaiKhoan");
         }
     }
 }
