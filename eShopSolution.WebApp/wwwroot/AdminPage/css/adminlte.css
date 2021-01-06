@@ -13711,9 +13711,9 @@ body.text-sm .control-sidebar {
 
 }
 
-.nav-pills .nav-link:not(.active):hover {
-  color: #79857e;
-}
+ .nav-pills .nav-link:not(.active):hover {
+        color: #79857e;
+  }
 
 .nav-pills .nav-item.dropdown.show .nav-link:hover {
   color: #ffffff;

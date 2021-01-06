@@ -28,6 +28,13 @@ namespace eShopSolution.WebApp.Controllers
         {
             return View();
         }
+         public IActionResult Kho()
+        {
+            return View();
+        }public IActionResult ThemKho()
+        {
+            return View();
+        }
 
 
     }

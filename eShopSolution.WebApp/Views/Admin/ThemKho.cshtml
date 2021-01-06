@@ -1,0 +1,46 @@
+﻿
+@{
+	ViewData["Title"] = "ThemKho";
+	Layout = "_AdminLayout";
+}
+<div class="content-header">
+	<div class="container-fluid">
+		<div class="row mb-3">
+			<div class="col-sm-6">
+				<h1 class="m-0 text-dark">Thêm sản phẩm vào kho</h1>
+			</div><!-- /.col -->
+			<div id="modesearch"></div>
+			<div class="col-sm-6 ">
+				<form action="./Ajax/searchName" style="padding-left: 400px;" method="post">
+					<input id="ipSearch" name="name" type="text" placeholder="Tìm kiếm sản phẩm">
+					<input type="submit" id="Ssubmit" value="Tìm kiếm ">
+				</form>
+			</div><!-- /.col -->
+
+		</div><!-- /.row -->
+	</div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+<!-- Main content -->
+<section class="content">
+	<div class="card-body p-0">
+
+		<form>
+			<div class="form-group">
+				<label for="formGroupExampleInput">Mã sản phẩm</label>
+				<select class="form-control" id="productCode">
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="formGroupExampleInput2">Số lượng</label>
+				<input class="form-control" type="number" value="0" id="quantity">
+			</div>
+			<div class="form-group">
+
+				<label for="comment">Comment:</label>
+				<textarea class="form-control " rows="5" id="note"></textarea>
+			</div>
+			<button type="button" class="btn btn-primary " id="btnAddStorage">Thêm vào kho</button>
+		</form>
+	</div>
+</section>
