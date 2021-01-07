@@ -27,12 +27,26 @@
 <div class="main">
 	<div class="wrap">
 		<div class="productB">
-			<div id="placeAdd">
-				@foreach (var item in Model)
-				{
-					@Html.DisplayFor(modelItem => item.TenSach)
-				}
-			</div>
+            <div id="placeAdd">
+                <table>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.TenSach)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TacGia)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hinh)
+                            <img src="~/images/banner2.svg" />
+                        </td>
+                    <td>@Html.DisplayFor(modelItem => item.Gia)</td>
+                    </tr>
+
+                    }
+                </table>
+                </div>
 
 		</div>
 	</div>

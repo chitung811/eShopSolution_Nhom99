@@ -9,6 +9,7 @@ using eShopSolution.WebApp.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
+using eShopSolution.WebApp.ViewModels;
 
 namespace eShopSolution.WebApp.Controllers
 {
@@ -21,11 +22,26 @@ namespace eShopSolution.WebApp.Controllers
             _context = context;
         }
 
+        private int soSachMoiTrang = 10;
      
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page =1)
         {
-            var myDbContext = _context.Sachs.Include(h => h.LoaiSach);
-            return View(await myDbContext.ToListAsync());
+            var dsSach = _context.Sachs
+                .Include(h => h.LoaiSach);
+                //.Skip((page - 1) * soSachMoiTrang)
+                //.Take(soSachMoiTrang)
+                //.Select(p => new HangHoaVM
+                //{
+                //    MaSach = p.MaSach,
+                //    TenSach = p.TenSach,
+                //    TacGia = p.TacGia,
+                //    MaLoai = p.MaLoai,
+                //    Hinh = p.Hinh,
+                //    MoTa = p.MoTa,
+                //    Gia = p.Gia
+                //});
+
+            return View(await dsSach.ToListAsync());
         }
         public IActionResult About()
         {
@@ -50,6 +66,15 @@ namespace eShopSolution.WebApp.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Detail(int id)
+        {
+            var item = _context.Sachs.SingleOrDefault(sach => sach.MaSach == id);
+            if (item != null)
+            {
+                return View(item);
+            }
+            return RedirectToAction("Index");
         }
     }
 }
