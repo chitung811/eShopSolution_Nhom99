@@ -76,5 +76,15 @@ namespace eShopSolution.WebApp.Controllers
             }
             return RedirectToAction("Index");
         }
+        public  IActionResult Category(int id)
+        {
+           var dsSach = _context.Sachs.SingleOrDefault(sach => sach.MaLoai == id);
+           if(dsSach != null)
+            {
+                return  View(dsSach);
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 }

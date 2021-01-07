@@ -1,0 +1,85 @@
+﻿@model IEnumerable<CartItem>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<div class="register_account">
+    <div class="wrap">
+        <!-- <h4 class="title">Shopping cart is empty</h4>
+        <p class="cart">You have no items in your shopping cart.<br>Click<a href="index.html"> here</a> to continue shopping</p> -->
+        <table class="titleCont" style="width:100%">
+            <thead>
+                <tr>
+                    <th style="width:125px">Hình Ảnh</th>
+                    <th style="width:125px">Tên Sách</th>
+                    <th style="width:125px">Giá Tiền</th>
+                    <th style="width:125px">Số Lượng</th>
+                    <th style="width:125px">Thành Tiền</th>
+                    <th style="width:104px"></th>
+                </tr>
+            </thead>
+
+            <tbody class="placeAdd">
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~Hinh/Sach/@item.Hinh" />
+                        </td>
+                        <td>
+                            @item.TenSach
+                        </td>
+                        <td>
+                            @item.Gia
+                        </td>
+                        <td>
+                            @item.SoLuong
+                        </td>
+                        <td>
+                            @item.TongTien
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <div class="nextCont">
+            <div class="backgroundImg">
+
+            </div>
+            <div class="payAndgift">
+                <div class="voucherCont">
+                    <div style="font-size:18px; font-weight: bold; ">Mã giảm giá/Phiếu mua hàng</div>
+                    <div class="inputCont">
+                        <input type="text" placeholder="Nhập mã của bạn..." class="inputStyle">
+                        <div class="apply">Áp Dụng</div>
+                    </div>
+                </div>
+                <div class="totalCont">
+                    <div style="font-size:20px; font-weight: bold; ">Thanh Toán</div>
+                    <div class="subTitle">
+                        <div class="leftCont">
+                            <div class="subFade">Tạm tính:</div>
+                            <div class="subFade">Khuyến Mãi:</div>
+                            <div class="subFade">Thành Tiền:</div>
+                        </div>
+                        <div class="rightCont">
+                            <div class="subBold getTotal"><span> đ</span></div>
+                            <div class="subBold getDiscount"><span> đ</span></div>
+                            <div class="subBold getLastPrice" style="color: #eb2101 ; font-size: 20px;"></div>
+                            <div class="subFade">(Đã bao gồm VAT)</div>
+                        </div>
+                    </div>
+                    <!--Thanh toan-->
+                    <a href="./checkout.html"><div class="pay">Thanh Toán</div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
