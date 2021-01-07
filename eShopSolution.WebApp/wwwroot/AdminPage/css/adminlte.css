@@ -4338,11 +4338,11 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
-.nav-pills .nav-link.active,
+/*.nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #000;
   background-color:#ffffff;
-}
+}*/
 
 .nav-fill .nav-item {
   -ms-flex: 1 1 auto;
@@ -13711,9 +13711,10 @@ body.text-sm .control-sidebar {
 
 }
 
- .nav-pills .nav-link:not(.active):hover {
+    .nav-pills .nav-link:not(.active):hover {
         color: #79857e;
-  }
+        background: #E1F5A9;
+    }
 
 .nav-pills .nav-item.dropdown.show .nav-link:hover {
   color: #ffffff;

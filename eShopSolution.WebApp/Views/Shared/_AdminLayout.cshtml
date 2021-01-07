@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="~/AdminPage/css/editProduct.css">
 	<link rel="stylesheet" href="~/AdminPage/css/Bill.css">
 	<link href="~/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	@RenderSection("css", required: false)
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 	<nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -78,6 +79,12 @@
 								</a>
 							</li>
 							<li class="nav-item">
+								<a href="/Admin/ThemLoai" class="nav-link">
+									<i class="far fa-circle nav-icon"></i>
+									<p>Thêm Loại Sách</p>
+								</a>
+							</li>
+							<li class="nav-item">
 								<a href="/Admin/ThemSach" class="nav-link">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Thêm sản phẩm</p>
@@ -129,7 +136,7 @@
 
 						</ul>
 					</li>
-					<li class="nav-item has-treeview menu-open">
+					<li class="nav-item has-treeview ">
 						<a href="#" class="nav-link" >
 							<i class="nav-icon fas fa-tachometer-alt"></i>
 							<p>
@@ -139,15 +146,15 @@
 						</a>
 						<ul class="nav nav-treeview">
 							<li class="nav-item">
-								<a href="/Admin/Kho" class="nav-link active">
+								<a href="/Admin/Kho" class="nav-link ">
 									<i class="far fa-circle nav-icon"></i>
 									<p>Thông tin kho</p>
 								</a>
 							</li>
-							<li class="nav-item" >
-								<a href="/Admin/ThemKho" class="nav-link" >
+							<li class="nav-item"  >
+								<a href="/Admin/ThemKho" class="nav-link " >
 									<i class="far fa-circle nav-icon"></i>
-									<p>Thêm sản phẩm vào kho</p>
+									<p >Thêm sản phẩm vào kho</p>
 								</a>
 							</li>
 						</ul>
@@ -172,7 +179,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="Promotion.html" class="nav-link">
+						<a href="Promotion.html" class="nav-link" >
 							<i class="nav-icon far fa-calendar-alt"></i>
 							<p>
 								Giảm giá
@@ -210,10 +217,5 @@
 	<script src="~/AdminPage/js/adminlte.js"></script>	
 	<script src="~/AdminPage/js/dashboard.js"></script>
 	<script src="~/AdminPage/js/demo.js"></script>
-	@*<script>
-	function css() {
-		document.getElementById("a").style.background = "white";
-		}
-	</script>*@
 </body>
 </html>

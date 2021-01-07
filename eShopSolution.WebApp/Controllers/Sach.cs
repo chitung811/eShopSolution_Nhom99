@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eShopSolution.WebApp.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eShopSolution.WebApp.Controllers
@@ -12,9 +13,6 @@ namespace eShopSolution.WebApp.Controllers
         {
             return View();
         }
-        public IActionResult ThemSach()
-        {
-            return View();
-        }
+     
     }
 }

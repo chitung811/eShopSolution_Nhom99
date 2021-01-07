@@ -3,6 +3,11 @@
 	ViewData["Title"] = "Home Page";
 	Layout = "_MainLayout";
 }
+@section css {
+	<link href="~/index/css/product.css" rel="stylesheet" />
+	<link href="~/index/css/fwslider.css" rel="stylesheet" />
+
+}
 <!-- start slider -->
 <div id="fwslider">
 	<div class="slider_container">
@@ -24,31 +29,34 @@
 	<div class="slideNext"><span></span></div>
 </div>
 <!--/slider -->
+@section sach{
 <div class="main">
 	<div class="wrap">
 		<div class="productB">
-            <div id="placeAdd">
-                <table>
-                    @foreach (var item in Model)
-                    {
+			@foreach (var item in Model)
+			{
+				<div class="productD">
+					<a href="/Sach/Chitiet">
+						<div class="inner_content clearfix">
+							<div class="product_image">
+								<img src="~/images/@item.Hinh" />
+							</div>
+							<div class="price">
+								<div class="cart-left">
+									<p class="title">@Html.DisplayFor(modelItem => item.TenSach)</p>
+									<div class="price1">
+										<span class="actual">@Html.DisplayFor(modelItem => item.Gia)</span>
+									</div>
+								</div>
+								<div class="cart-right"> </div>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</a>
+				</div>
+			}
 
-                    <tr>
-                        <td>@Html.DisplayFor(modelItem => item.TenSach)</td>
-                        <td>@Html.DisplayFor(modelItem => item.TacGia)</td>
-                        <td>@Html.DisplayFor(modelItem => item.MoTa)</td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Hinh)
-                            <img src="~/images/banner2.svg" />
-                        </td>
-                    <td>@Html.DisplayFor(modelItem => item.Gia)</td>
-                    </tr>
-
-                    }
-                </table>
-                </div>
-
-		</div>
-	</div>
 </div>
-
+</div>
+</div>
+}

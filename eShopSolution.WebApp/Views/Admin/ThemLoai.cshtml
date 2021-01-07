@@ -1,0 +1,21 @@
+﻿@model IEnumerable<eShopSolution.WebApp.Entities.LoaiSach>
+@{
+	ViewData["Title"] = "ThemLoai";
+	Layout = "_AdminLayout";
+}
+@section css{
+	<link rel="stylesheet" href="~/AdminPage/css/AddCategory.css">
+}
+<section class="content">
+	<div class="title">Thêm Loại Sách</div>
+	<div class="content">
+		<form asp-action="ThemLoai">
+			<div class="form-group">
+					<div class="info">Tên Loại</div>
+					<input type="text" id="TenLoai" name="TenLoai" class="form-control" >
+				<br />
+				<input type="submit" value="Xác Nhận" class="confirm">
+			</div>
+			</form>
+	</div>
+</section>
