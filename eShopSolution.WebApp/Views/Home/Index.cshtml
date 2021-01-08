@@ -31,36 +31,76 @@
 <!--/slider -->
 
 @section sach{
-	<div class="main">
-		<div class="wrap">
-			<div class="productB">
-				<div id="placeAdd">
-					@foreach (var item in Model)
-					{
-						<div class="productD">
-							<a href="/Sach/Chitiet/@item.MaSach">
-								<div class="inner_content clearfix">
-									<div class="product_image">
-										<img src="~/images/@item.Hinh" />
-									</div>
-									<div class="price">
-										<div class="cart-left">
-											<p class="title">@Html.DisplayFor(modelItem => item.TenSach)</p>
-											<div class="price1">
-												<span class="actual">@Html.DisplayFor(modelItem => item.Gia)</span>
-											</div>
-										</div>
-										<div class="cart-right"> </div>
-										<div class="clear"></div>
+<div class="main">
+	<div class="wrap">
+		<div class="productB">
+			@foreach (var item in Model)
+			{
+				<div class="productD">
+					<a>
+						<div class="inner_content clearfix">
+							<div class="product_image">
+								<img src="~/images/@item.Hinh" />
+							</div>
+							<div class="price">
+								<div class="cart-left">
+									<p class="title">@Html.DisplayFor(modelItem => item.TenSach)</p>
+									<div class="price1">
+										<span class="actual">@Html.DisplayFor(modelItem => item.Gia)</span>
 									</div>
 								</div>
-							</a>
+								<div>
+									<p>
+										<button type="button" class="ajax-add-to-cart" data-id="@item.MaSach">
+											Add To Cart
+										</button>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</div>
 						</div>
-					}
+					</a>
+				</div>
+			}
 
-				</div>
-				</div>
-				</div>
-				</div>
+</div>
+</div>
+</div>
+}
 
+@section scripts{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	<script>
+		$(document).ready(function () {
+			$(".ajax-add-to-cart").click(function () {
+				$.ajax({
+					url: "Cart/AddToCart",
+					data: {
+						id: $(this).data("id"),
+						SoLuong: 1,
+						type: "ajax"
+					},
+					success: function (data) {
+						console.log(data);
+						Swal.fire({
+							icon: 'success',
+							title: 'Thêm sách vào giỏ hàng thành công',
+							showConfirmButton: false,
+							timer: 1500
+						});
+					},
+					error: function () {
+						Swal.fire({
+							icon: 'error',
+							title: 'Thêm vào giỏ hàng thất bại',
+							text: 'Vui lòng thử lại!',
+							showConfirmButton: false,
+							timer: 1500
+						});
+                    }
+				});
+			});
+		});
+	</script>
 }

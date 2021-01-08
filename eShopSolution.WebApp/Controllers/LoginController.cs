@@ -1,60 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using eShopSolution.WebApp.Models;
 using eShopSolution.WebApp.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using eShopSolution.WebApp.ViewModels;
 
 namespace eShopSolution.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class LoginController : Controller
     {
         private readonly MyDBContext _context;
+        
 
-        public HomeController(MyDBContext context)
+        public LoginController(MyDBContext context)
         {
             _context = context;
         }
-
-        //Dang ki dang nhap
-
-        //Ket thuc dang ki dang nhap
-
-        private int soSachMoiTrang = 10;
-     
-        public async Task<IActionResult> Index(int page =1)
+        // GET: Home
+        public ActionResult Index()
         {
             if (HttpContext.Session != null)
             {
-                var dsSach = _context.Sachs
-                .Include(h => h.LoaiSach);
-                //.Skip((page - 1) * soSachMoiTrang)
-                //.Take(soSachMoiTrang)
-                //.Select(p => new HangHoaVM
-                //{
-                //    MaSach = p.MaSach,
-                //    TenSach = p.TenSach,
-                //    TacGia = p.TacGia,
-                //    MaLoai = p.MaLoai,
-                //    Hinh = p.Hinh,
-                //    MoTa = p.MoTa,
-                //    Gia = p.Gia
-                //});
-
-                return View(await dsSach.ToListAsync());
-                
+                return View();
             }
             else
             {
                 return RedirectToAction("Login");
             }
-            
+        }
+
+        //GET: Register
+
+        public ActionResult Register()
+        {
+            return View();
         }
 
         //POST: Register
@@ -128,48 +110,23 @@ namespace eShopSolution.WebApp.Controllers
             return RedirectToAction("Login");
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
 
-            return View();
-        }
 
-        public IActionResult Contact()
+        //create a string MD5
+        public static string GetMD5(string str)
         {
-            ViewData["Message"] = "Your contact page.";
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-        public IActionResult Detail(int id)
-        {
-            var item = _context.Sachs.SingleOrDefault(sach => sach.MaSach == id);
-            if (item != null)
+            for (int i = 0; i < targetData.Length; i++)
             {
-                return View(item);
-            }
-            return RedirectToAction("Index");
-        }
-        public  IActionResult Category(int id)
-        {
-           var dsSach = _context.Sachs.SingleOrDefault(sach => sach.MaLoai == id);
-           if(dsSach != null)
-            {
-                return  View(dsSach);
-            }
+                byte2String += targetData[i].ToString("x2");
 
-            return RedirectToAction("Index");
+            }
+            return byte2String;
         }
+
     }
 }
