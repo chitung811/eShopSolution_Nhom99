@@ -31,45 +31,48 @@
 <!--/slider -->
 
 @section sach{
-<div class="main">
-	<div class="wrap">
-		<div class="productB">
-			@foreach (var item in Model)
-			{
-				<div class="productD">
-					<a>
-						<div class="inner_content clearfix">
-							<div class="product_image">
-								<img src="~/images/@item.Hinh" />
-							</div>
-							<div class="price">
-								<div class="cart-left">
-									<p class="title">@Html.DisplayFor(modelItem => item.TenSach)</p>
-									<div class="price1">
-										<span class="actual">@Html.DisplayFor(modelItem => item.Gia)</span>
-									</div>
-								</div>
-								<div>
-									<p>
-										<button type="button" class="ajax-add-to-cart" data-id="@item.MaSach">
-											Add To Cart
-										</button>
-									</p>
-								</div>
-								<div class="clear"></div>
-							</div>
-						</div>
-					</a>
+	<div class="main">
+		<div class="wrap">
+			<div class="productB">
+				<div class="placeAdd">
+					 @foreach (var item in Model) { 
+					 <div class="productD">
+					
+						 <div class="inner_content clearfix">
+						 	<a href="/Sach/Chitiet/@item.MaSach">
+						 		<div class="product_image">
+						 			<img src="~/images/@item.Hinh" />
+						 		</div>
+								 </a>
+						 		<div class="price">
+						 			<div class="cart-left">
+						 				<p class="title">@Html.DisplayFor(modelItem => item.TenSach)</p>
+						 			<div class="price1">
+						 				<span class="actual">@Html.DisplayFor(modelItem => item.Gia)</span>
+						 		</div>
+						 	</div>
+						 	<div>
+						 		<p>
+						 			<button class="ajax-add-to-cart" data-id="@item.MaSach">
+						 				Add To Cart
+						 			</button>
+						 		</p>
+						 	</div>
+						 	<div class="clear"></div>
+						 </div>
+						 </div>
+					
 				</div>
 			}
 
 </div>
-</div>
-</div>
+			</div>
+		</div>
+	</div>
 }
 
 @section scripts{
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 	<script>
 		$(document).ready(function () {
@@ -98,7 +101,7 @@
 							showConfirmButton: false,
 							timer: 1500
 						});
-                    }
+					}
 				});
 			});
 		});
