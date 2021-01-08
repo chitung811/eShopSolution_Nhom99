@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="login">
+    <div class="wrap">
+        <div class="col_1_of_login span_1_of_login">
+            <h4 class="title">Khách Hàng Mới</h4>
+            <div class="button1">
+                <a href="Login/Register"><input type="submit" name="Submit" value="Tạo Tài Khoản"></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="col_1_of_login span_1_of_login">
+            <div class="login-title">
+                <h4 class="title">Đăng Nhập</h4>
+                <div id="loginbox" class="loginbox">
+                    <form asp-action="Login" id="login-form">
+                        <fieldset class="input">
+                            <p id="login-form-username">
+                                <label for="email">Tên Đăng Nhập</label>
+                                <input id="email" type="text" name="email" class="inputbox" size="18" autocomplete="off">
+                            </p>
+                            <p id="login-form-password">
+                                <label for="password">Mật Khẩu</label>
+                                <input id="password" type="password" name="password" class="inputbox" size="18" autocomplete="off">
+                            </p>
+                            <div class="remember">
+                                <input id="submit1" type="submit" name="Submit" class="button" value="Login">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+

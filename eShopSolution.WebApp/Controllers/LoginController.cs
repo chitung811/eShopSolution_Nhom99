@@ -49,7 +49,7 @@ namespace eShopSolution.WebApp.Controllers
                 var check = _context.TaiKhoans.FirstOrDefault(s => s.Email == _TaiKhoan.Email);
                 if (check == null)
                 {
-                    _TaiKhoan.Password = GetMD5(_TaiKhoan.Password);
+                    //_TaiKhoan.Password = GetMD5(_TaiKhoan.Password);
                     //_context.Configuration.ValidateOnSaveEnabled = false;
                     _context.TaiKhoans.Add(_TaiKhoan);
                     _context.SaveChanges();
@@ -83,8 +83,8 @@ namespace eShopSolution.WebApp.Controllers
             {
 
 
-                var f_password = GetMD5(password);
-                var data = _context.TaiKhoans.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                //var f_password = GetMD5(password);
+                var data = _context.TaiKhoans.Where(s => s.Email.Equals(email) && s.Password.Equals(password)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session

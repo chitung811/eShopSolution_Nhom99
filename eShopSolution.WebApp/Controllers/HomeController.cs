@@ -22,11 +22,17 @@ namespace eShopSolution.WebApp.Controllers
             _context = context;
         }
 
+        //Dang ki dang nhap
+
+        //Ket thuc dang ki dang nhap
+
         private int soSachMoiTrang = 10;
      
         public async Task<IActionResult> Index(int page =1)
         {
-            var dsSach = _context.Sachs
+            if (HttpContext.Session != null)
+            {
+                var dsSach = _context.Sachs
                 .Include(h => h.LoaiSach);
                 //.Skip((page - 1) * soSachMoiTrang)
                 //.Take(soSachMoiTrang)
@@ -41,8 +47,87 @@ namespace eShopSolution.WebApp.Controllers
                 //    Gia = p.Gia
                 //});
 
-            return View(await dsSach.ToListAsync());
+                return View(await dsSach.ToListAsync());
+                
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+            
         }
+
+        //POST: Register
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(TaiKhoan _TaiKhoan)
+        {
+            if (ModelState.IsValid)
+            {
+                var check = _context.TaiKhoans.FirstOrDefault(s => s.Email == _TaiKhoan.Email);
+                if (check == null)
+                {
+                    //_TaiKhoan.Password = GetMD5(_TaiKhoan.Password);
+                    //_context.Configuration.ValidateOnSaveEnabled = false;
+                    _context.TaiKhoans.Add(_TaiKhoan);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.error = "Email already exists";
+                    return View();
+                }
+
+
+            }
+            return View();
+
+
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string email, string password)
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                //var f_password = GetMD5(password);
+                var data = _context.TaiKhoans.Where(s => s.Email.Equals(email) && s.Password.Equals(password)).ToList();
+                if (data.Count() > 0)
+                {
+                    //add session
+                    HttpContext.Session.SetString("FullName", data.FirstOrDefault().HoTen);
+                    HttpContext.Session.SetString("Email", data.FirstOrDefault().Email);
+                    HttpContext.Session.SetInt32("ID", data.FirstOrDefault().ID);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.error = "Login failed";
+                    return RedirectToAction("Login");
+                }
+            }
+            return View();
+        }
+
+
+        //Logout
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Clear();//remove session
+            return RedirectToAction("Login");
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
