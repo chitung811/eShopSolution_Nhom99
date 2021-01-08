@@ -1,0 +1,59 @@
+﻿@model eShopSolution.WebApp.Entities.Sach
+
+@{
+	ViewData["Title"] = "Sua";
+	Layout = "_AdminLayout";
+}
+
+<div class="title">Sửa Sản Phẩm</div>
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Sua" enctype="multipart/form-data">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="contentCont">
+				<div class="infoUser Left">
+					<input asp-for="MaSach" class="form-control" />
+					<div class="form-group">
+
+						<label asp-for="TenSach" class="control-label"></label>
+						<input asp-for="TenSach" class="form-control" />
+						<span asp-validation-for="TenSach" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="TacGia" class="control-label"></label>
+						<input asp-for="TacGia" class="form-control" />
+						<span asp-validation-for="TacGia" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="MaLoai" class="control-label"></label>
+						<select asp-for="MaLoai" class="form-control" asp-items="ViewBag.MaLoai"></select>
+						<span asp-validation-for="MaLoai" class="text-danger"></span>
+					</div>
+				</div>
+				<div class="infoUser right">
+					<div class="form-group">
+						<label asp-for="MoTa" class="control-label"></label>
+						<input asp-for="MoTa" class="form-control" />
+						<span asp-validation-for="MoTa" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Hinh" class="control-label"></label>
+						<input asp-for="Hinh" class="form-control hide" />
+						<img src="~/images/@Model.Hinh" height="100" width="100" />
+						<input name="HinhUpLoad" class="form-control" />
+
+					</div>
+					<div class="form-group">
+						<label asp-for="Gia" class="control-label"></label>
+						<input asp-for="Gia" class="form-control" />
+						<span asp-validation-for="Gia" class="text-danger"></span>
+					</div>
+				</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Xác nhận" class="btn btn-danger" />
+				</div>
+</form>
+	</div>
+</div>
+

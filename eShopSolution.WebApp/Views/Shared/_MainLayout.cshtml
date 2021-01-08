@@ -32,25 +32,25 @@
 	<div>
 		<header>
 			<div class="header-top">
-			<div class="cssmenu">
-				<ul>
-					<i class="fas fa-user" id="loginButton" aria-hidden="true"></i>
-					<li>
+				<div class="cssmenu">
+					<ul>
+						<i class="fas fa-user" id="loginButton" aria-hidden="true"></i>
+						<li>
 
 
-						<a href="/KhachHang/Login">Đăng Nhập</a>
+							<a href="/KhachHang/Login">Đăng Nhập</a>
 
-					</li>
-					<i class="fas fa-pen" id="registerButton" aria-hidden="true"></i>
-					<li>
+						</li>
+						<i class="fas fa-pen" id="registerButton" aria-hidden="true"></i>
+						<li>
 
-						<a href="/KhachHang/Register">Đăng Ký</a>
-					</li>
-				</ul>
-					</div>
-					<div class="text2"></div>
-					<div class="clear"></div>
+							<a href="/KhachHang/Register">Đăng Ký</a>
+						</li>
+					</ul>
 				</div>
+				<div class="text2"></div>
+				<div class="clear"></div>
+			</div>
 			<div class="header-bottom">
 				<div class="wrap">
 					<div class="header-bottom-left">
@@ -176,15 +176,15 @@
 					<div class="clear"></div>
 				</div>
 			</div>
-	
+
 		</header>
 	</div>
 	<div class="site-section">
 		<div class="container">
 			@RenderBody()
-			@RenderSection("sach", required: false)
 		</div>
 	</div>
+	@RenderSection("sach", required: false)
 	<footer>
 		<div class="footer">
 			<div class="footer-top">
@@ -192,10 +192,6 @@
 			</div>
 			<div class="footer-middle">
 				<div class="wrap">
-
-
-
-
 					<div class="section group example">
 						<div class="col_1_of_f_1 span_1_of_f_1">
 							<div class="section group example">
@@ -246,6 +242,7 @@
 			</div>
 		</div>
 	</footer>
+	@RenderSection("Scripts", required: false)
 </body>
 
 </html>

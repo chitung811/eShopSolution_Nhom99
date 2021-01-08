@@ -1,0 +1,60 @@
+﻿@model eShopSolution.WebApp.Entities.Sach
+
+@{
+	ViewData["Title"] = "Delete";
+	
+}
+<h3>Bạn có chắc chắn xóa sách này?</h3>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã Sách: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaSach)
+        </dd>
+        <dt>
+           Tên Sách: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TenSach)
+        </dd>
+        <dt>
+           Tác giả:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TacGia)
+        </dd>
+        <dt>
+           Mã Loại: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaLoai)
+        </dd>
+        <dt>
+            Mô Tả:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MoTa)
+        </dd>
+        <dt>
+            Hình: 
+        </dt>
+        <dd>
+           <img src="/images/@Model.Hinh" height="100" width="100" />
+        </dd>
+        <dt>
+            Giá: 
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gia)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Trở về</a>
+    </form>
+</div>

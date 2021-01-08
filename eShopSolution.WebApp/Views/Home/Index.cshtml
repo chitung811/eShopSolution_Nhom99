@@ -29,34 +29,38 @@
 	<div class="slideNext"><span></span></div>
 </div>
 <!--/slider -->
+
 @section sach{
-<div class="main">
-	<div class="wrap">
-		<div class="productB">
-			@foreach (var item in Model)
-			{
-				<div class="productD">
-					<a href="/Sach/Chitiet">
-						<div class="inner_content clearfix">
-							<div class="product_image">
-								<img src="~/images/@item.Hinh" />
-							</div>
-							<div class="price">
-								<div class="cart-left">
-									<p class="title">@Html.DisplayFor(modelItem => item.TenSach)</p>
-									<div class="price1">
-										<span class="actual">@Html.DisplayFor(modelItem => item.Gia)</span>
+	<div class="main">
+		<div class="wrap">
+			<div class="productB">
+				<div id="placeAdd">
+					@foreach (var item in Model)
+					{
+						<div class="productD">
+							<a href="/Sach/Chitiet/@item.MaSach">
+								<div class="inner_content clearfix">
+									<div class="product_image">
+										<img src="~/images/@item.Hinh" />
+									</div>
+									<div class="price">
+										<div class="cart-left">
+											<p class="title">@Html.DisplayFor(modelItem => item.TenSach)</p>
+											<div class="price1">
+												<span class="actual">@Html.DisplayFor(modelItem => item.Gia)</span>
+											</div>
+										</div>
+										<div class="cart-right"> </div>
+										<div class="clear"></div>
 									</div>
 								</div>
-								<div class="cart-right"> </div>
-								<div class="clear"></div>
-							</div>
+							</a>
 						</div>
-					</a>
-				</div>
-			}
+					}
 
-</div>
-</div>
-</div>
+				</div>
+				</div>
+				</div>
+				</div>
+
 }

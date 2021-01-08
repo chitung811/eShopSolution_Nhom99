@@ -1,41 +1,49 @@
 ﻿@model eShopSolution.WebApp.Entities.Sach
 @{
-	ViewData["Title"] = "ThemSach";
+	ViewData["Title"] = "SuaSach";
 	Layout = "_AdminLayout";
 }
-
+@section css{
+<link href="~/AdminPage/css/AddCategory.css" rel="stylesheet" />
+}
 <section class="content" id="placeAdd">
-	<div class="title">Thêm Sản Phẩm</div>
-	
-	<form asp-action="ThemSach" asp-controller="Admin" enctype="multipart/form-data">
+	<div class="title">Sửa Sản Phẩm</div>
+
+	<form asp-action="SuaSach" asp-controller="Admin" enctype="multipart/form-data">
 		<div class="contentCont">
 			<div class="infoUser Left">
 				<div class="subInfo">
+					<div class="info">Mã Sách </div>
+					<input type="text" asp-for="MaSach" class="inputField">
+				</div>
+				<div class="subInfo">
 					<div class="info">Tên Sản Phẩm</div>
-					<input type="text" id="TenSach" name="TenSach" ="inputField">
+					<input type="text" asp-for="TenSach" class="inputField">
 				</div>
 				<div class="subInfo">
 					<div class="info">Giá Bán</div>
-					<input type="text" id="Gia" name="Gia" class="inputField">
+					<input type="text" asp-for="Gia" class="inputField">
 				</div>
 				<div class="subInfo">
 					<div class="info">Hình Ảnh</div>
-					<input type="file"  name="HinhUpload" class="inputField">
+					<input asp-for="Hinh" class="inputField">
+					<img src="~/images/@Model.Hinh" height="100" width="100" />
+					<input type="file" name="HinhUpLoad" class="inputField">
 				</div>
 			</div>
 			<div class="infoUser Right">
 				<div class="subInfo">
 					<div class="info">Tác Giả</div>
-					<input type="text" id="TacGia" name="TacGia" class="inputField">
+					<input type="text" asp-for="TacGia" class="inputField">
 				</div>
 				<div class="subInfo">
 					<div class="info">Thể Loại Sách</div>
-					<select id="MaLoai" name="MaLoai" asp-items="ViewBag.MaLoai"></select>
+					<select id="MaLoai" asp-for="MaLoai" asp-items="ViewBag.MaLoai"></select>
 				</div>
 				<div class="subInfo">
 					<div class="info">Mô Tả Sách</div>
-					<input type="text" id="MoTa" name="MoTa" class="inputField">
-					
+					<input type="text" asp-for="MoTa" class="inputField">
+
 				</div>
 
 				<input type="Submit" class="confirm" value="Xác Nhận">
