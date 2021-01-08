@@ -33,7 +33,7 @@ namespace eShopSolution.WebApp.Controllers
         {
             return View(Carts);
         }
-        public IActionResult AddToCart(int id)
+        public IActionResult AddToCart(int id, int SoLuong, string type = "Normal")
         {
             var myCart = Carts;
             var item = myCart.SingleOrDefault(p => p.MaSach == id);
@@ -45,7 +45,7 @@ namespace eShopSolution.WebApp.Controllers
                     MaSach = id,
                     TenSach = sach.TenSach,
                     Gia = sach.Gia,
-                    SoLuong = 1,
+                    SoLuong = SoLuong,
                     Hinh = sach.Hinh
                 };
                 myCart.Add(item);
@@ -55,6 +55,13 @@ namespace eShopSolution.WebApp.Controllers
                 item.SoLuong++;
             }
             HttpContext.Session.Set("GioHang", myCart);
+            if(type == "ajax")
+            {
+                return Json(new
+                {
+                    SoLuong = Carts.Sum(c=> c.SoLuong)
+                });
+            }
             return RedirectToAction("Index");
         }
     }
