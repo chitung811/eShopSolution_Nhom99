@@ -140,14 +140,27 @@ namespace eShopSolution.WebApp.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-        public IActionResult DsTaiKhoan()
+        public async Task<IActionResult> DsTaiKhoan()
         {
-            return View();
+            return View(await _context.TaiKhoans.ToListAsync());
         }
-        public IActionResult ThemTaiKhoan()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ThemTaiKhoan([Bind("HoTen,Email,Password,SDT,DiaChi,Role")] eShopSolution.WebApp.Entities.TaiKhoan taikhoan)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+       
+
+                _context.Add(taikhoan);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+       
+            return View(taikhoan);
+
         }
+
         public IActionResult HoaDon()
         {
             return View();

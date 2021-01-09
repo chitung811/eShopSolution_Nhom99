@@ -52,7 +52,7 @@ namespace eShopSolution.WebApp.Controllers
             }
             else
             {
-                item.SoLuong++;
+                item.SoLuong+=SoLuong;
             }
             HttpContext.Session.Set("GioHang", myCart);
             if(type == "ajax")
