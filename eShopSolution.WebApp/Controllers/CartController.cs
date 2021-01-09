@@ -33,7 +33,7 @@ namespace eShopSolution.WebApp.Controllers
         {
             return View(Carts);
         }
-        public IActionResult AddToCart(int id, int SoLuong, string type = "Normal")
+        public IActionResult AddToCart(int id, int SoLuong = 1, string type = "Normal")
         {
             var myCart = Carts;
             var item = myCart.SingleOrDefault(p => p.MaSach == id);

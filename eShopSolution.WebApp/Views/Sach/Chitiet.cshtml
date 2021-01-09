@@ -6,30 +6,34 @@
 @section css{
 	<link href="~/index/css/single.css" rel="stylesheet" />
 }
-<table>
-	<tr>
-		<td>
-			<div class="img">
-			<img class="pdImg" src="~/images/@Model.Hinh" width="350" height="350"/>
-			<div class="clearfix"></div>
-			</div>
-		</td>
-		<td>
-			<div class="info">
-				<h3 class="m_3 pdName">@Model.TenSach</h3>
-				<p class="m_5 pdPrice">
-					@Model.Gia
-				</p>
-				<p class="m_text2">@Model.MoTa</p>
-				<div class="btn_form">
-					<div>
-						<input type="submit" value="Thêm Giỏ Hàng" title="" id="btnBuy">
-					</div>
-				</div>
-				<span class="m_link"><a href="login.html"></a> </span>
+<form class="col-md-12" method="post">
+    <table>
+        <tr>
+            <td>
+                <div class="img">
+                    <img class="pdImg" src="~/images/@Model.Hinh" width="350" height="350" />
+                    <div class="clearfix"></div>
+                </div>
+            </td>
+            <td>
+                <div class="info">
+                    <h3 class="m_3 pdName">@Model.TenSach</h3>
+                    <p class="m_5 pdPrice">
+                        @Model.Gia
+                    </p>
+                    <p class="m_text2">@Model.MoTa</p>
+                    <div class="btn_form">
+                        <div>
+                            <p>
+                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.MaSach">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <span class="m_link"><a href="login.html"></a> </span>
 
-			</div>
-			</div>
-		</td>
-	</tr>
-</table>
+                </div>
+                
+            </td>
+        </tr>
+    </table>
+</form>
